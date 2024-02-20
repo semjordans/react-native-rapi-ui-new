@@ -19,7 +19,7 @@ interface Props extends TextInputProps {
   borderRadius?: number;
 }
 
-const StyledTextInput: React.FC<Props> = React.forwardRef((props: Props, ref: any) => {
+const StyledTextInput: React.FC<Props> = (props: Props) => {
   const { theme } = useTheme();
   const {
     containerStyle,
@@ -46,12 +46,12 @@ const StyledTextInput: React.FC<Props> = React.forwardRef((props: Props, ref: an
         paddingHorizontal: containerStyle?.paddingHorizontal || 20,
         alignItems: "center",
         justifyContent: "space-between",
+        borderTopWidth: 0 
       }}
     >
       {leftContent}
       <TextInput
         {...otherProps}
-        ref={ref}
         placeholderTextColor={component[theme].textInput.placeholderTextColor}
         style={{
           flex: 1,
@@ -65,5 +65,5 @@ const StyledTextInput: React.FC<Props> = React.forwardRef((props: Props, ref: an
       {rightContent}
     </View>
   );
-});
+};
 export default StyledTextInput;
